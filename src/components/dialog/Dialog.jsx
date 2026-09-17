@@ -1,18 +1,23 @@
 import { styled } from 'styled-components'
 
-const DialogContainer = styled.div`
+import DialogHeader from './DialogHeader'
+
+const DialogWrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.surface};
     border-radius: ${({ theme }) => theme.radius.dialog};
     box-shadow: ${({ theme }) => theme.shadow.main};
-    padding: 2rem;
+    width: 60rem;
+    height: 40rem;
 `;
 
-const Dialog = () => {
+const Dialog = ({ children }) => {
     return (
-        <div>
-            <h1>Dialog</h1>
-        </div>
+        <DialogWrapper>
+            {children}
+        </DialogWrapper>
     )
 }
+
+Dialog.Header = DialogHeader
 
 export default Dialog
