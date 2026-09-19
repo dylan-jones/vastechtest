@@ -1,4 +1,4 @@
-import { styled } from 'styled-components'
+import { styled } from 'styled-components';
 
 import { FaRegCircleXmark, FaBolt, FaWindowMaximize  } from "react-icons/fa6";
 
@@ -6,6 +6,7 @@ const HeaderWrapper = styled.header`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
     padding: 1.2rem;
 `;
 
@@ -13,6 +14,7 @@ const HeaderActions = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-shrink: 0;
 `;
 
 const ActionButton = styled.button`
@@ -27,13 +29,21 @@ const ActionButton = styled.button`
     }
 `;
 
+const TitleWrap = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    flex: 1;
+    padding-right: 4rem;
+`;
+
 const HeaderTitle = styled.h3`
     margin: 0;
     font-size: 1.6rem;
     line-height: 1.8rem;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.text};
-    display: flex;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -42,10 +52,10 @@ const HeaderTitle = styled.h3`
 const DialogHeader = ({ title }) => {
     return (
         <HeaderWrapper>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <TitleWrap>
                 <FaBolt size={20} />
                 <HeaderTitle>{title}</HeaderTitle>
-            </div>
+            </TitleWrap>
             <HeaderActions>
                 <ActionButton aria-label="Maximize dialog">
                     <FaWindowMaximize size={20} />
