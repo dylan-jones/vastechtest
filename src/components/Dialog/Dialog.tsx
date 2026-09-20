@@ -1,3 +1,5 @@
+import { type ReactNode } from 'react'
+
 import { styled } from 'styled-components'
 
 import DialogHeader from './DialogHeader'
@@ -27,7 +29,7 @@ const DialogContainer = styled.div`
     height: 100%;
 `;
 
-const Dialog = ({ children }) => {
+const Dialog = ({ children = '' }: { children: ReactNode }) => {
     return (
         <DialogWrapper>
             <DialogContainer>

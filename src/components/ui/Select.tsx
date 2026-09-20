@@ -67,12 +67,12 @@ const Select = ({ name, label, arrayVal = [] }: SelectProps) => {
             {label && <SelectLabel htmlFor={id}>{label}</SelectLabel>}
             <SelectWrapper>
                 <StyledSelect id={id} name={name}>
-                {arrayVal.map((item, index) =>
-                    <option key={index} value={item.toLowerCase()}>{item}</option>
+                    {arrayVal.map((item, index) =>
+                        <option key={index} value={item.toLowerCase()}>{item}</option>
                     )}
                     </StyledSelect>
                     <IconContainer>
-                    <FaChevronDown />
+                        <FaChevronDown />
                     </IconContainer>
             </SelectWrapper>
         </SelectContainer>

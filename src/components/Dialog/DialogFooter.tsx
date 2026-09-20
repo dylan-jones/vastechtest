@@ -10,7 +10,7 @@ const FooterWrapper = styled.footer`
   background-color: ${({ theme }) => theme.colors.panel};
 `;
 
-const DialogFooter = ({ cancel, delete: del, save }) => {
+const DialogFooter = ({ cancel, delete: del, save } : {cancel : any, delete: any, save: any}) => {
   return (
     <FooterWrapper>
       {cancel && (

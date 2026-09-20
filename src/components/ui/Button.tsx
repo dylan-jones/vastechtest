@@ -1,10 +1,10 @@
-import { ReactNode } from "react";
+import { type ReactNode, type ButtonHTMLAttributes } from "react";
 
 import styled, { css } from "styled-components";
 
 type ButtonVariants = "save" | "delete" | "close";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     $variant?: ButtonVariants;
     children?: ReactNode;
 }
@@ -57,9 +57,9 @@ const StyledButton = styled.button<ButtonProps>`
     }
 `;
 
-const Button = ({ $variant = "save", onClick, children, ...props }: ButtonProps) => {
+const Button = ({ $variant = "save", children, ...props }: ButtonProps) => {
     return (
-        <StyledButton $variant={$variant} onClick={onClick} {...props}>
+        <StyledButton $variant={$variant} {...props}>
             {children}
         </StyledButton>
     )

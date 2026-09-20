@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import { styled } from 'styled-components'
 
 const BodyWrapper = styled.div`
@@ -21,7 +22,7 @@ const BodyWrapper = styled.div`
     }
 `;
 
-const DialogBody = ({ children }) => {
+const DialogBody = ({ children }: { children: ReactNode }) => {
     return (
         <BodyWrapper>
             {children}

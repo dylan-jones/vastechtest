@@ -7,6 +7,7 @@ import Date from './components/UI/Date'
 import Select from './components/UI/Select'
 
 import { Dialog } from './components/Dialog'
+import Search from './components/UI/Search'
 
 const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
   e.preventDefault();
@@ -50,22 +51,63 @@ function App() {
         <FormDisplay>
           <Button onClick={handleButtonClick}>Test Button</Button>
           <Date />
-          <Input />
+          <Input label="Input text" />
+          <Input label="Input text with error" initialError />
+          <Search  />
           <Select name="test" label="Test Select" arrayVal={selectValue}  />
         </FormDisplay>
       </Section>
       <Section>
         <DialogDisplay>
+          {/* Simple Dialog */}
           <Dialog>
-            <Dialog.Header title="Dialog Title Test" />
+            <Dialog.Header />
+            <Dialog.Body></Dialog.Body>
+          </Dialog>
+
+          {/* Dialog with Heading */}
+          <Dialog>
+            <Dialog.Header title="Dialog Heading" />
             <Dialog.Body>
               <p>This is some copy for the dialog body.</p>
             </Dialog.Body>
           </Dialog>
+
+          {/* Dialog with Heading and Button bar */}
+          <Dialog>
+            <Dialog.Header title="Dialog Heading with Button Bar" />
+            <Dialog.Body>
+              <p>This is some copy for the dialog body.</p>
+            </Dialog.Body>
+            <Dialog.Footer cancel={handleButtonClick} delete={handleButtonClick} save={handleButtonClick} />
+          </Dialog>
+
+          {/* Dialog with long heading, button bar and controls */}
           <Dialog>
             <Dialog.Header title="Dialog Title Test with some extra copy for length asd asd asd asd asd as" />
             <Dialog.Body>
-              <p>This is some copy for the dialog body.</p>
+              <form>
+                <Input label="Simple Textbox" />
+                <Date />
+                <Search  />
+                <Select name="test" label="Simple Dropdown" arrayVal={selectValue}  />
+                <Input label="Simple Textbox Validation Error Placeholder" initialError />
+              </form>
+            </Dialog.Body>
+            <Dialog.Footer cancel={handleButtonClick} delete={handleButtonClick} save={handleButtonClick} />
+          </Dialog>
+
+          {/* Dialog with long heading, button bar, controls and overflow */}
+          <Dialog>
+            <Dialog.Header title="Dialog Title Test with some extra copy for length asd asd asd asd asd as" />
+            <Dialog.Body>
+              <form>
+                <Input label="Simple Textbox" />
+                <Date />
+                <Search  />
+                <Select name="test" label="Simple Dropdown" arrayVal={selectValue}  />
+                <Input label="Simple Textbox Validation Error Placeholder" initialError />
+              </form>
             </Dialog.Body>
             <Dialog.Footer cancel={handleButtonClick} delete={handleButtonClick} save={handleButtonClick} />
           </Dialog>

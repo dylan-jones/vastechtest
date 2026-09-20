@@ -15,6 +15,7 @@ const HeaderActions = styled.div`
     align-items: center;
     gap: ${({ theme }) => theme.spacing.sm};
     flex-shrink: 0;
+    margin-left: auto;
 `;
 
 const ActionButton = styled.button`
@@ -49,13 +50,15 @@ const HeaderTitle = styled.h3`
     text-overflow: ellipsis;
 `;
 
-const DialogHeader = ({ title }) => {
+const DialogHeader = ({ title = '' } : {title: string}) => {
     return (
         <HeaderWrapper>
-            <TitleWrap>
-                <FaBolt size={20} />
-                <HeaderTitle>{title}</HeaderTitle>
-            </TitleWrap>
+            {title &&
+                <TitleWrap>
+                    <FaBolt size={20} />
+                    <HeaderTitle>{title}</HeaderTitle>
+                </TitleWrap>
+            }
             <HeaderActions>
                 <ActionButton aria-label="Maximize dialog">
                     <FaWindowMaximize size={20} />
