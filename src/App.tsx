@@ -1,4 +1,5 @@
 import type { MouseEvent } from 'react'
+import { useState } from 'react'
 import { styled } from 'styled-components'
 
 import Button from './components/UI/Button'
@@ -9,13 +10,13 @@ import Select from './components/UI/Select'
 import { Dialog } from './components/Dialog'
 import Search from './components/UI/Search'
 
-const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
-  e.preventDefault();
-  console.log('Button clicked!');
-}
-
 const Section = styled.section`
   padding: 10rem 2rem;
+`
+
+const SectionTitle = styled.h2`
+  font-size: 2rem;
+  margin: 0 0 4rem;
 `
 
 const FormDisplay = styled.form`
@@ -35,19 +36,64 @@ const DialogDisplay = styled.div`
   grid-template-columns: 1fr;
   gap: 6rem;
 
+  dialog {
+    position: relative;
+  }
+
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }
 `
+
+const DialogForm = styled.form`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 1.6rem 0.8rem;
+`;
+
+const StaticDialogWrapper = styled.div<{ $expanded?: boolean }>`
+    background-color: ${({ theme }) => theme.colors.surface};
+    border-radius: ${({ theme }) => theme.radius.dialog};
+    box-shadow: ${({ theme }) => theme.shadow.main};
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+
+    width: 100%;
+    height: 100%;
+`;
+
+const StaticDialogContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+`;
+
+const ActionButtons = styled.div`
+  display: flex;
+  gap: 1.6rem;
+`
   
 
 function App() {
   const selectValue: string[] = ['option one', 'option two', 'option three']
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+
+  const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    alert('a test button has been clicked')
+  }
+
+  const handleDialog = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsDialogOpen(true)
+  }
 
   return (
     <>
       <Section>
+        <SectionTitle>Form Components</SectionTitle>
         <FormDisplay>
           <Button onClick={handleButtonClick}>Test Button</Button>
           <Date />
@@ -58,58 +104,96 @@ function App() {
         </FormDisplay>
       </Section>
       <Section>
+        <SectionTitle>Static Dialogs</SectionTitle>
         <DialogDisplay>
           {/* Simple Dialog */}
-          <Dialog>
-            <Dialog.Header />
-            <Dialog.Body></Dialog.Body>
-          </Dialog>
+          <StaticDialogWrapper style={{height: '35rem'}}>
+            <StaticDialogContainer>
+              <Dialog.Header />
+              <Dialog.Body></Dialog.Body>
+            </StaticDialogContainer>
+          </StaticDialogWrapper>
 
           {/* Dialog with Heading */}
-          <Dialog>
-            <Dialog.Header title="Dialog Heading" />
-            <Dialog.Body>
-              <p>This is some copy for the dialog body.</p>
-            </Dialog.Body>
-          </Dialog>
+          <StaticDialogWrapper style={{height: '35rem'}}>
+            <StaticDialogContainer>
+              <Dialog.Header title="Dialog Heading" />
+              <Dialog.Body>
+                <p>This is some copy for the dialog body.</p>
+              </Dialog.Body>
+            </StaticDialogContainer>
+          </StaticDialogWrapper>
 
           {/* Dialog with Heading and Button bar */}
-          <Dialog>
-            <Dialog.Header title="Dialog Heading with Button Bar" />
-            <Dialog.Body>
-              <p>This is some copy for the dialog body.</p>
-            </Dialog.Body>
-            <Dialog.Footer cancel={handleButtonClick} delete={handleButtonClick} save={handleButtonClick} />
-          </Dialog>
+          <StaticDialogWrapper style={{height: '35rem'}}>
+            <StaticDialogContainer>
+              <Dialog.Header title="Dialog Heading with Button Bar" />
+              <Dialog.Body>
+                <p>This is some copy for the dialog body.</p>
+              </Dialog.Body>
+              <Dialog.Footer cancel delete save />
+            </StaticDialogContainer>
+          </StaticDialogWrapper>
 
           {/* Dialog with long heading, button bar and controls */}
-          <Dialog>
-            <Dialog.Header title="Dialog Title Test with some extra copy for length asd asd asd asd asd as" />
-            <Dialog.Body>
-              <form>
-                <Input label="Simple Textbox" />
-                <Date />
-                <Search  />
-                <Select name="test" label="Simple Dropdown" arrayVal={selectValue}  />
-                <Input label="Simple Textbox Validation Error Placeholder" initialError />
-              </form>
-            </Dialog.Body>
-            <Dialog.Footer cancel={handleButtonClick} delete={handleButtonClick} save={handleButtonClick} />
-          </Dialog>
+          <StaticDialogWrapper style={{height: '35rem'}}>
+            <StaticDialogContainer>
+              <Dialog.Header title="Dialog Title Test with some extra copy for length asd asd asd asd asd as" />
+              <Dialog.Body>
+                <DialogForm>
+                  <Input />
+                  <Date />
+                  <Search  />
+                  <Select name="test" arrayVal={selectValue}  />
+                  <Input initialError />
+                </DialogForm>
+              </Dialog.Body>
+              <Dialog.Footer cancel delete save />
+            </StaticDialogContainer>
+          </StaticDialogWrapper>
 
           {/* Dialog with long heading, button bar, controls and overflow */}
-          <Dialog>
+          <StaticDialogWrapper style={{height: '24rem'}}>
+            <StaticDialogContainer>
+              <Dialog.Header title="Dialog Title Test with some extra copy for length asd asd asd asd asd as" />
+              <Dialog.Body>
+                <DialogForm>
+                  <Input />
+                  <Date />
+                  <Search  />
+                  <Select name="test" arrayVal={selectValue}  />
+                  <Input initialError />
+                </DialogForm>
+              </Dialog.Body>
+              <Dialog.Footer cancel delete save />
+            </StaticDialogContainer>
+          </StaticDialogWrapper>
+        </DialogDisplay>
+      </Section>
+      <Section>
+        <SectionTitle>Action Dialog</SectionTitle>
+        <ActionButtons>
+          <Button onClick={handleDialog}>Open Dialog</Button>
+        </ActionButtons>
+        <DialogDisplay>
+
+          {/* Dialog with long heading, button bar and controls */}
+          <Dialog
+            open={isDialogOpen}
+            onClose={() => setIsDialogOpen(false)}
+            maxWidth='68rem'
+            >
             <Dialog.Header title="Dialog Title Test with some extra copy for length asd asd asd asd asd as" />
             <Dialog.Body>
-              <form>
-                <Input label="Simple Textbox" />
+              <DialogForm>
+                <Input />
                 <Date />
                 <Search  />
-                <Select name="test" label="Simple Dropdown" arrayVal={selectValue}  />
-                <Input label="Simple Textbox Validation Error Placeholder" initialError />
-              </form>
+                <Select name="test" arrayVal={selectValue}  />
+                <Input initialError />
+              </DialogForm>
             </Dialog.Body>
-            <Dialog.Footer cancel={handleButtonClick} delete={handleButtonClick} save={handleButtonClick} />
+            <Dialog.Footer cancel delete save />
           </Dialog>
         </DialogDisplay>
       </Section>

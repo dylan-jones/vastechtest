@@ -1,6 +1,14 @@
+import { useContext } from 'react';
 import { styled } from 'styled-components';
+import { DialogContext } from './DialogContext';
 
 import { FaRegCircleXmark, FaBolt, FaWindowMaximize  } from "react-icons/fa6";
+
+interface DialogProps {
+    title?: string
+    onExpand?: () => void
+    onClose?: () => void
+}
 
 const HeaderWrapper = styled.header`
     display: flex;
@@ -50,7 +58,11 @@ const HeaderTitle = styled.h3`
     text-overflow: ellipsis;
 `;
 
-const DialogHeader = ({ title = '' } : {title: string}) => {
+const DialogHeader = ({ title = '', onExpand, onClose } : DialogProps) => {
+    const ctx = useContext(DialogContext)
+    const handleExpand = onExpand ?? ctx.onExpand;
+    const handleClose = onClose ?? ctx.onClose;
+
     return (
         <HeaderWrapper>
             {title &&
@@ -60,10 +72,10 @@ const DialogHeader = ({ title = '' } : {title: string}) => {
                 </TitleWrap>
             }
             <HeaderActions>
-                <ActionButton aria-label="Maximize dialog">
+                <ActionButton aria-label="Maximize dialog" onClick={handleExpand}>
                     <FaWindowMaximize size={20} />
                 </ActionButton>
-                <ActionButton aria-label="Close dialog">
+                <ActionButton aria-label="Close dialog" onClick={handleClose}>
                     <FaRegCircleXmark size={20} />
                 </ActionButton>
             </HeaderActions>

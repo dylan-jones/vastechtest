@@ -41,7 +41,7 @@ const StyledSelect = styled.select`
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     font-size: 1.4rem;
-    font-weight: 200;
+    font-weight: 300;
     color: ${({ theme }) => theme.colors.text};
 
     &:focus {

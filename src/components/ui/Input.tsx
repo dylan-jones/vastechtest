@@ -30,7 +30,7 @@ const StyledInput = styled.input<StyledInputProps>`
     border-radius: ${({ theme }) => theme.input.borderRadius};
     padding: ${({ theme }) => theme.input.padding};
     font-size: 1.4rem;
-    font-weight: 200;
+    font-weight: 300;
     z-index: 1;
 
     border-color: ${({ $hasError, theme }) => $hasError ? theme.colors.secondary : theme.input.border || 'initial'};
