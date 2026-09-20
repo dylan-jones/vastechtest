@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import type { MouseEvent } from 'react'
 import { styled } from 'styled-components'
 
 import Button from './components/UI/Button'
 import Input from './components/UI/Input'
 import Date from './components/UI/Date'
+import Select from './components/UI/Select'
 
-import { Dialog } from './components/Dialog/'
+import { Dialog } from './components/Dialog'
 
-const handleButtonClick = (e: React.ChangeEvent<any>) => {
+const handleButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
   e.preventDefault();
   console.log('Button clicked!');
 }
@@ -16,10 +17,23 @@ const Section = styled.section`
   padding: 10rem 2rem;
 `
 
+const FormDisplay = styled.form`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6rem;
+  max-width: 120rem;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+`
+
 const DialogDisplay = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 6rem;
+
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
@@ -28,16 +42,17 @@ const DialogDisplay = styled.div`
   
 
 function App() {
-  const [count, setCount] = useState(0)
+  const selectValue: string[] = ['option one', 'option two', 'option three']
 
   return (
     <>
       <Section>
-        <form>
+        <FormDisplay>
           <Button onClick={handleButtonClick}>Test Button</Button>
           <Date />
           <Input />
-        </form>
+          <Select name="test" label="Test Select" arrayVal={selectValue}  />
+        </FormDisplay>
       </Section>
       <Section>
         <DialogDisplay>

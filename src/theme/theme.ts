@@ -21,10 +21,19 @@ export const theme = {
         small: '1px solid #F3F3F3',
         dialog: '1px solid #DEDEDE',
     },
+    spacing: {
+        xs: '0.4rem',
+        sm: '0.8rem',
+        md: '1.6rem',
+        lg: '2.4rem',
+        xl: '3.2rem',
+        xxl: '4rem'
+    },
     shadow: {
-        main: ' 0px 2px 20px 0px #0000004d',
+        main: '0px 2px 20px 0px #0000004d',
     },
     input: {
+        backgroundColor: '#ffffff',
         height: '3rem',
         borderRadius: '99rem',
         border: '2px solid #E8E8E8',

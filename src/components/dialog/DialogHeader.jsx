@@ -13,7 +13,7 @@ const HeaderWrapper = styled.header`
 const HeaderActions = styled.div`
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: ${({ theme }) => theme.spacing.sm};
     flex-shrink: 0;
 `;
 
@@ -32,7 +32,7 @@ const ActionButton = styled.button`
 const TitleWrap = styled.div`
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: ${({ theme }) => theme.spacing.sm};
     min-width: 0;
     flex: 1;
     padding-right: 4rem;
