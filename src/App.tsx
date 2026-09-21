@@ -115,15 +115,15 @@ function App() {
           <Date />
           <Input label="Input text" />
           <Input label="Input text with error" initialError />
-          <Search  />
-          <Select name="test" label="Test Select" arrayVal={selectValue}  />
+          <Search />
+          <Select name="test" label="Test Select" arrayVal={selectValue} />
         </FormDisplay>
       </Section>
       <Section>
         <SectionTitle>Static Dialogs</SectionTitle>
         <DialogDisplay>
           {/* Simple Dialog */}
-          <StaticDialogWrapper style={{height: '35rem'}}>
+          <StaticDialogWrapper style={{ height: '35rem' }}>
             <StaticDialogContainer>
               <Dialog.Header />
               <Dialog.Body></Dialog.Body>
@@ -131,7 +131,7 @@ function App() {
           </StaticDialogWrapper>
 
           {/* Dialog with Heading */}
-          <StaticDialogWrapper style={{height: '35rem'}}>
+          <StaticDialogWrapper style={{ height: '35rem' }}>
             <StaticDialogContainer>
               <Dialog.Header title="Dialog Heading" />
               <Dialog.Body>
@@ -141,7 +141,7 @@ function App() {
           </StaticDialogWrapper>
 
           {/* Dialog with Heading and Button bar */}
-          <StaticDialogWrapper style={{height: '35rem'}}>
+          <StaticDialogWrapper style={{ height: '35rem' }}>
             <StaticDialogContainer>
               <Dialog.Header title="Dialog Heading with Button Bar" />
               <Dialog.Body>
@@ -152,15 +152,15 @@ function App() {
           </StaticDialogWrapper>
 
           {/* Dialog with long heading, button bar and controls */}
-          <StaticDialogWrapper style={{height: '35rem'}}>
+          <StaticDialogWrapper style={{ height: '35rem' }}>
             <StaticDialogContainer>
               <Dialog.Header title="Dialog Title Test with some extra copy for length asd asd asd asd asd as" />
               <Dialog.Body>
                 <DialogForm>
                   <Input />
                   <Date />
-                  <Search  />
-                  <Select name="test" arrayVal={selectValue}  />
+                  <Search />
+                  <Select name="test" arrayVal={selectValue} />
                   <Input initialError />
                 </DialogForm>
               </Dialog.Body>
@@ -169,15 +169,15 @@ function App() {
           </StaticDialogWrapper>
 
           {/* Dialog with long heading, button bar, controls and overflow */}
-          <StaticDialogWrapper style={{height: '24rem'}}>
+          <StaticDialogWrapper style={{ height: '24rem' }}>
             <StaticDialogContainer>
               <Dialog.Header title="Dialog Title Test with some extra copy for length asd asd asd asd asd as" />
               <Dialog.Body>
                 <DialogForm>
                   <Input />
                   <Date />
-                  <Search  />
-                  <Select name="test" arrayVal={selectValue}  />
+                  <Search />
+                  <Select name="test" arrayVal={selectValue} />
                   <Input initialError />
                 </DialogForm>
               </Dialog.Body>
@@ -217,14 +217,14 @@ function App() {
             open={isDialogOpen}
             onClose={() => setIsDialogOpen(false)}
             maxWidth='68rem'
-            >
+          >
             <Dialog.Header title="Dialog Title Test with some extra copy for length asd asd asd asd asd as" />
             <Dialog.Body>
               <DialogForm>
                 <Input />
                 <Date />
-                <Search  />
-                <Select name="test" arrayVal={selectValue}  />
+                <Search />
+                <Select name="test" arrayVal={selectValue} />
                 <Input initialError />
               </DialogForm>
             </Dialog.Body>
