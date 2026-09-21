@@ -7,13 +7,13 @@ This project is a React + TypeScript application built with Vite for the VASTech
 Before you run this project, make sure you have:
 
 - Node.js 18 or later
-- pnpm 9.x (recommended via Corepack)
+- pnpm 11.x (recommended via Corepack)
 
 If pnpm is not available, enable it with:
 
 ```bash
 corepack enable
-corepack prepare pnpm@9.15.0 --activate
+corepack prepare pnpm@11.15.0 --activate
 ```
 
 ## Install
