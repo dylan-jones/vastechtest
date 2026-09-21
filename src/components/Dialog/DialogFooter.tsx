@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { styled } from "styled-components";
 import { DialogContext } from './DialogContext';
 
-import Button from "../UIgit/Button";
+import Button from "../UI/Button";
 
 interface DialogProps {
   cancel: boolean
