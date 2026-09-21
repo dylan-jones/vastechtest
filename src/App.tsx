@@ -74,7 +74,23 @@ const ActionButtons = styled.div`
   display: flex;
   gap: 1.6rem;
 `
-  
+
+const CodeBlock = styled.pre`
+  background-color: ${({ theme }) => theme.colors.surface};
+  border-radius: ${({ theme }) => theme.radius.dialog};
+  box-shadow: ${({ theme }) => theme.shadow.main};
+  padding: 2rem 2.4rem;
+  margin: 4rem 0 0;
+  overflow-x: auto;
+
+  code {
+    font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    white-space: pre;
+    tab-size: 2;
+  }
+`
 
 function App() {
   const selectValue: string[] = ['option one', 'option two', 'option three']
@@ -169,6 +185,25 @@ function App() {
             </StaticDialogContainer>
           </StaticDialogWrapper>
         </DialogDisplay>
+        <CodeBlock>
+          <code>{`<Dialog
+  open={isDialogOpen}
+  onClose={() => setIsDialogOpen(false)}
+  maxWidth='68rem'
+>
+  <Dialog.Header title="Dialog Title Test" />
+  <Dialog.Body>
+    <DialogForm>
+      <Input />
+      <Date />
+      <Search />
+      <Select name="test" arrayVal={selectValue} />
+      <Input initialError />
+    </DialogForm>
+  </Dialog.Body>
+  <Dialog.Footer cancel delete save />
+</Dialog>`}</code>
+        </CodeBlock>
       </Section>
       <Section>
         <SectionTitle>Action Dialog</SectionTitle>
