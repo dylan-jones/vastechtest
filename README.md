@@ -7,14 +7,21 @@ This project is a React + TypeScript application built with Vite for the VASTech
 Before you run this project, make sure you have:
 
 - Node.js 18 or later
-- npm 9 or later
+- pnpm 9.x (recommended via Corepack)
+
+If pnpm is not available, enable it with:
+
+```bash
+corepack enable
+corepack prepare pnpm@9.15.0 --activate
+```
 
 ## Install
 
 From the project root, run:
 
 ```bash
-npm install
+pnpm install
 ```
 
 ## Run locally
@@ -22,7 +29,7 @@ npm install
 Start the app in development mode:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Then open the local URL shown in the terminal, usually:
@@ -38,17 +45,18 @@ If the default port is busy, Vite will automatically choose another available po
 To create a production build:
 
 ```bash
-npm run build
+pnpm build
 ```
 
 To preview the production build locally:
 
 ```bash
-npm run preview -- --host
+pnpm preview -- --host
 ```
 
 ## Notes
 
 - This app is designed to be reviewed and run locally on a developer machine.
 - If needed, use the terminal output from Vite to confirm the correct URL and port.
-- For a quick sanity check, the project should build successfully with `npm run build` before handing off for review.
+- For a quick sanity check, the project should build successfully with `pnpm build` before handing off for review.
+- If `pnpm import` is not working, the issue is usually a stale Corepack shim rather than a project issue. Re-activating pnpm with Corepack resolves it.
