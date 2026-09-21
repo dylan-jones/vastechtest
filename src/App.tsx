@@ -2,13 +2,13 @@ import type { MouseEvent } from 'react'
 import { useState } from 'react'
 import { styled } from 'styled-components'
 
-import Button from './components/UI/Button'
-import Input from './components/UI/Input'
-import Date from './components/UI/Date'
-import Select from './components/UI/Select'
+import Button from './components/UIgit/Button'
+import Input from './components/UIgit/Input'
+import Date from './components/UIgit/Date'
+import Select from './components/UIgit/Select'
 
 import { Dialog } from './components/Dialog'
-import Search from './components/UI/Search'
+import Search from './components/UIgit/Search'
 
 const Section = styled.section`
   padding: 10rem 2rem;
